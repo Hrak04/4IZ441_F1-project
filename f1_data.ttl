@@ -1,0 +1,356 @@
+@prefix : <http://www.semanticweb.org/kater/ontologies/2026/0/f1_project#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<http://www.semanticweb.org/kater/ontologies/2026/0/f1_project/data>
+  a owl:Ontology ;
+  owl:imports <http://www.semanticweb.org/kater/ontologies/2026/0/f1_project#> .
+
+
+#################################################################
+#  SEASON
+#################################################################
+
+:Season2024 a :Season ;
+  :seasonYear 2024 ;
+  :driversChampion :MaxVerstappen ;
+  :constructorsChampion :McLaren .
+
+#################################################################
+#  TEAMS
+#################################################################
+
+:RedBull a :Team ; foaf:name "Oracle Red Bull Racing" .
+:Ferrari a :Team ; foaf:name "Scuderia Ferrari" .
+:McLaren a :Team ; foaf:name "McLaren Formula 1 Team" .
+:Mercedes a :Team ; foaf:name "Mercedes-AMG Petronas Formula One Team" .
+
+#################################################################
+#  CARS
+#################################################################
+
+:RB20 a :Car ; rdfs:label "Red Bull RB20" .
+:SF24 a :Car ; rdfs:label "Ferrari SF-24" .
+:MCL38 a :Car ; rdfs:label "McLaren MCL38" .
+
+#################################################################
+#  DRIVERS
+#################################################################
+
+:MaxVerstappen a :Driver ;
+  foaf:name "Max Verstappen" ;
+  :nationality "Dutch" .
+
+:CarlosSainz a :Driver ;
+  foaf:name "Carlos Sainz" ;
+  :nationality "Spanish" .
+
+:CharlesLeclerc a :Driver ;
+  foaf:name "Charles Leclerc" ;
+  :nationality "Monegasque" .
+
+:LandoNorris a :Driver ;
+  foaf:name "Lando Norris" ;
+  :nationality "British" .
+
+:OscarPiastri a :Driver ;
+  foaf:name "Oscar Piastri" ;
+  :nationality "Australian" .
+
+:OliverBearman a :Driver ;
+  foaf:name "Oliver Bearman" ;
+  :nationality "British" .
+
+#################################################################
+#  CIRCUITS
+#################################################################
+
+:Sakhir a :Circuit ; foaf:name "Bahrain International Circuit" .
+:Jeddah a :Circuit ; foaf:name "Jeddah Corniche Circuit" .
+:AlbertPark a :Circuit ; foaf:name "Albert Park Circuit" .
+:Monaco a :Circuit ; foaf:name "Circuit de Monaco" .
+:Monza a :Circuit ; foaf:name "Autodromo Nazionale Monza" .
+:Miami a :Circuit ; foaf:name "Miami International Autodrome" .
+:HermanosRodriguez a :Circuit ; foaf:name "Autódromo Hermanos Rodríguez" .
+:Zandvoort a :Circuit ; foaf:name "Circuit Zandvoort" .
+:YasMarina a :Circuit ; foaf:name "Yas Marina Circuit" .
+:Interlagos a :Circuit ; foaf:name "Autódromo José Carlos Pace (Interlagos)" .
+
+#################################################################
+#  DRIVER ASSIGNMENTS — 2024
+#################################################################
+
+:DA_MaxVerstappen_2024 a :DriverAssignment ;
+  :assignedDriver :MaxVerstappen ;
+  :assignedTeam :RedBull ;
+  :usesCar :RB20 ;
+  :assignmentSeason :Season2024 ;
+  :driverNumber 1 ;
+  :validForRace :R1, :R2, :R3, :R4, :R5, :R6, :R7, :R8 .
+
+:DA_CarlosSainz_2024 a :DriverAssignment ;
+  :assignedDriver :CarlosSainz ;
+  :assignedTeam :Ferrari ;
+  :usesCar :SF24 ;
+  :assignmentSeason :Season2024 ;
+  :driverNumber 55 ;
+  :validForRace :R1, :R3, :R4, :R6, :R7, :R8 .
+
+:DA_CharlesLeclerc_2024 a :DriverAssignment ;
+  :assignedDriver :CharlesLeclerc ;
+  :assignedTeam :Ferrari ;
+  :usesCar :SF24 ;
+  :assignmentSeason :Season2024 ;
+  :driverNumber 16 ;
+  :validForRace :R1, :R3, :R4, :R5, :R6, :R7, :R8 .
+
+:DA_LandoNorris_2024 a :DriverAssignment ;
+  :assignedDriver :LandoNorris ;
+  :assignedTeam :McLaren ;
+  :usesCar :MCL38 ;
+  :assignmentSeason :Season2024 ;
+  :driverNumber 4 ;
+  :validForRace :R1, :R2, :R3, :R4, :R5, :R6, :R7, :R8 .
+
+:DA_OscarPiastri_2024 a :DriverAssignment ;
+  :assignedDriver :OscarPiastri ;
+  :assignedTeam :McLaren ;
+  :usesCar :MCL38 ;
+  :assignmentSeason :Season2024 ;
+  :driverNumber 81 ;
+  :validForRace :R1, :R2, :R3, :R4, :R5, :R6, :R7, :R8 .
+
+#################################################################
+#  SUBSTITUTION — SAUDI ARABIA
+#################################################################
+
+:DA_Bearman_Ferrari_R2 a :DriverAssignment ;
+  :assignedDriver :OliverBearman ;
+  :assignedTeam :Ferrari ;
+  :usesCar :SF24 ;
+  :assignmentSeason :Season2024 ;
+  :driverNumber 38 ;
+  :validForRace :R2 .
+
+#################################################################
+#  RACES (8 — ALL FACTUALLY CORRECT)
+#################################################################
+
+:R1 a :Race ;
+  foaf:name "Bahrain GP" ;
+  :partOfSeason :Season2024 ;
+  :hasCircuit :Sakhir ;
+  :winnerAssignment :DA_MaxVerstappen_2024 ;
+  :numberOfLaps 57 .
+
+:R2 a :Race ;
+  foaf:name "Saudi Arabian GP" ;
+  :partOfSeason :Season2024 ;
+  :hasCircuit :Jeddah ;
+  :winnerAssignment :DA_MaxVerstappen_2024 ;
+  :numberOfLaps 50 .
+
+:R3 a :Race ;
+  foaf:name "Australian GP" ;
+  :partOfSeason :Season2024 ;
+  :hasCircuit :AlbertPark ;
+  :winnerAssignment :DA_CarlosSainz_2024 ;
+  :numberOfLaps 58 .
+
+:R4 a :Race ;
+  foaf:name "Monaco GP" ;
+  :partOfSeason :Season2024 ;
+  :hasCircuit :Monaco ;
+  :winnerAssignment :DA_CharlesLeclerc_2024 ;
+  :numberOfLaps 78 .
+
+:R5 a :Race ;
+  foaf:name "Italian GP" ;
+  :partOfSeason :Season2024 ;
+  :hasCircuit :Monza ;
+  :winnerAssignment :DA_CharlesLeclerc_2024 ;
+  :numberOfLaps 53 .
+
+:R6 a :Race ;
+  foaf:name "Miami GP" ;
+  :partOfSeason :Season2024 ;
+  :hasCircuit :Miami ;
+  :winnerAssignment :DA_LandoNorris_2024 ;
+  :numberOfLaps 57 .
+
+:R7 a :Race ;
+  foaf:name "Mexico City GP" ;
+  :partOfSeason :Season2024 ;
+  :hasCircuit :HermanosRodriguez ;
+  :winnerAssignment :DA_CarlosSainz_2024 ;
+  :numberOfLaps 71 .
+
+:R8 a :Race ;
+  foaf:name "Dutch GP" ;
+  :partOfSeason :Season2024 ;
+  :hasCircuit :Zandvoort ;
+  :winnerAssignment :DA_MaxVerstappen_2024 ;
+  :numberOfLaps 72 .
+
+
+
+#################################################################
+#  SEASON 2010 (HISTORICAL SAMPLE)
+#################################################################
+
+:Season2010 a :Season ;
+  :seasonYear 2010 ;
+  :driversChampion :SebastianVettel ;
+  :constructorsChampion :RedBull .
+
+#################################################################
+#  DRIVERS (2010 SAMPLE)
+#################################################################
+
+:SebastianVettel a :Driver ;
+  foaf:name "Sebastian Vettel" ;
+  :nationality "German" .
+
+:MarkWebber a :Driver ;
+  foaf:name "Mark Webber" ;
+  :nationality "Australian" .
+
+:FernandoAlonso a :Driver ;
+  foaf:name "Fernando Alonso" ;
+  :nationality "Spanish" .
+
+#################################################################
+#  CARS (2010 SAMPLE)
+#################################################################
+
+:RB6 a :Car ;
+  rdfs:label "Red Bull RB6" .
+
+:F10 a :Car ;
+  rdfs:label "Ferrari F10" .
+
+#################################################################
+#  RACES (2010 SAMPLE)
+#################################################################
+
+:R2010_Bahrain a :Race ;
+  foaf:name "Bahrain GP 2010" ;
+  :partOfSeason :Season2010 ;
+  :hasCircuit :Sakhir ;
+  :winnerAssignment :DA_Alonso_2010 ;
+  :numberOfLaps 49 .
+
+:R2010_AbuDhabi a :Race ;
+  foaf:name "Abu Dhabi GP 2010" ;
+  :partOfSeason :Season2010 ;
+  :hasCircuit :YasMarina ;
+  :winnerAssignment :DA_Vettel_2010 ;
+  :numberOfLaps 55 .
+
+#################################################################
+#  DRIVER ASSIGNMENTS (2010 SAMPLE)
+#################################################################
+
+:DA_Vettel_2010 a :DriverAssignment ;
+  :assignedDriver :SebastianVettel ;
+  :assignedTeam :RedBull ;
+  :usesCar :RB6 ;
+  :assignmentSeason :Season2010 ;
+  :driverNumber 5 ;
+  :validForRace :R2010_Bahrain, :R2010_AbuDhabi .
+
+:DA_Webber_2010 a :DriverAssignment ;
+  :assignedDriver :MarkWebber ;
+  :assignedTeam :RedBull ;
+  :usesCar :RB6 ;
+  :assignmentSeason :Season2010 ;
+  :driverNumber 6 ;
+  :validForRace :R2010_Bahrain, :R2010_AbuDhabi .
+
+:DA_Alonso_2010 a :DriverAssignment ;
+  :assignedDriver :FernandoAlonso ;
+  :assignedTeam :Ferrari ;
+  :usesCar :F10 ;
+  :assignmentSeason :Season2010 ;
+  :driverNumber 14 ;
+  :validForRace :R2010_Bahrain, :R2010_AbuDhabi .
+
+#################################################################
+#  SEASON 2016 (HISTORICAL SAMPLE)
+#################################################################
+
+:Season2016 a :Season ;
+  :seasonYear 2016 ;
+  :driversChampion :NicoRosberg ;
+  :constructorsChampion :Mercedes .
+
+#################################################################
+#  DRIVERS (2016 SAMPLE)
+#################################################################
+
+:NicoRosberg a :Driver ;
+  foaf:name "Nico Rosberg" ;
+  :nationality "German" .
+
+:LewisHamilton a :Driver ;
+  foaf:name "Lewis Hamilton" ;
+  :nationality "British" .
+
+#################################################################
+#  CARS (2016 SAMPLE)
+#################################################################
+
+:W07 a :Car ;
+  rdfs:label "Mercedes W07 Hybrid" .
+
+:RB12 a :Car ;
+  rdfs:label "Red Bull RB12" .
+
+#################################################################
+#  RACES (2016 SAMPLE)
+#################################################################
+
+:R2016_Bahrain a :Race ;
+  foaf:name "Bahrain GP 2016" ;
+  :partOfSeason :Season2016 ;
+  :hasCircuit :Sakhir ;
+  :winnerAssignment :DA_Rosberg_2016 ;
+  :numberOfLaps 57 .
+
+:R2016_Brazil a :Race ;
+  foaf:name "Brazilian GP 2016" ;
+  :partOfSeason :Season2016 ;
+  :hasCircuit :Interlagos ;
+  :winnerAssignment :DA_Hamilton_2016 ;
+  :numberOfLaps 71 .
+
+#################################################################
+#  DRIVER ASSIGNMENTS (2016 SAMPLE)
+#################################################################
+
+:DA_Rosberg_2016 a :DriverAssignment ;
+  :assignedDriver :NicoRosberg ;
+  :assignedTeam :Mercedes ;
+  :usesCar :W07 ;
+  :assignmentSeason :Season2016 ;
+  :driverNumber 6 ;
+  :validForRace :R2016_Bahrain, :R2016_Brazil .
+
+:DA_Hamilton_2016 a :DriverAssignment ;
+  :assignedDriver :LewisHamilton ;
+  :assignedTeam :Mercedes ;
+  :usesCar :W07 ;
+  :assignmentSeason :Season2016 ;
+  :driverNumber 44 ;
+  :validForRace :R2016_Bahrain, :R2016_Brazil .
+
+:DA_Verstappen_2016 a :DriverAssignment ;
+  :assignedDriver :MaxVerstappen ;
+  :assignedTeam :RedBull ;
+  :usesCar :RB12 ;
+  :assignmentSeason :Season2016 ;
+  :driverNumber 33 ;
+  :validForRace :R2016_Bahrain, :R2016_Brazil .
+

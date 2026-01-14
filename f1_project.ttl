@@ -1,0 +1,235 @@
+@prefix : <http://www.semanticweb.org/kater/ontologies/2026/0/f1_project#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@base <http://www.semanticweb.org/kater/ontologies/2026/0/f1_project#> .
+
+<http://www.semanticweb.org/kater/ontologies/2026/0/f1_project#> rdf:type owl:Ontology ;
+                                                                  rdfs:comment "This is my semestral project for 4IZ441" .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://xmlns.com/foaf/0.1/name
+foaf:name rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/kater/ontologies/2026/0/f1_project#assignedDriver
+:assignedDriver rdf:type owl:ObjectProperty ;
+                owl:inverseOf :hasDriverAssignment ;
+                rdfs:domain :DriverAssignment ;
+                rdfs:range :Driver .
+
+
+###  http://www.semanticweb.org/kater/ontologies/2026/0/f1_project#assignedTeam
+:assignedTeam rdf:type owl:ObjectProperty ;
+              owl:inverseOf :hasTeamAssignment ;
+              rdfs:domain :DriverAssignment ;
+              rdfs:range :Team .
+
+
+###  http://www.semanticweb.org/kater/ontologies/2026/0/f1_project#assignmentSeason
+:assignmentSeason rdf:type owl:ObjectProperty ;
+                  rdfs:domain :DriverAssignment ;
+                  rdfs:range :Season .
+
+
+###  http://www.semanticweb.org/kater/ontologies/2026/0/f1_project#constructorsChampion
+:constructorsChampion rdf:type owl:ObjectProperty ,
+                               owl:FunctionalProperty ;
+                      rdfs:domain :Season ;
+                      rdfs:range :Team .
+
+
+###  http://www.semanticweb.org/kater/ontologies/2026/0/f1_project#driversChampion
+:driversChampion rdf:type owl:ObjectProperty ,
+                          owl:FunctionalProperty ;
+                 rdfs:domain :Season ;
+                 rdfs:range :Driver .
+
+
+###  http://www.semanticweb.org/kater/ontologies/2026/0/f1_project#hasCircuit
+:hasCircuit rdf:type owl:ObjectProperty ;
+            rdfs:domain :Race ;
+            rdfs:range :Circuit .
+
+
+###  http://www.semanticweb.org/kater/ontologies/2026/0/f1_project#hasDriverAssignment
+:hasDriverAssignment rdf:type owl:ObjectProperty ;
+                     rdfs:domain :Driver ;
+                     rdfs:range :DriverAssignment .
+
+
+###  http://www.semanticweb.org/kater/ontologies/2026/0/f1_project#hasTeamAssignment
+:hasTeamAssignment rdf:type owl:ObjectProperty ;
+                   rdfs:domain :Team ;
+                   rdfs:range :DriverAssignment .
+
+
+###  http://www.semanticweb.org/kater/ontologies/2026/0/f1_project#partOfSeason
+:partOfSeason rdf:type owl:ObjectProperty ;
+              rdfs:domain :Race ;
+              rdfs:range :Season .
+
+
+###  http://www.semanticweb.org/kater/ontologies/2026/0/f1_project#usesCar
+:usesCar rdf:type owl:ObjectProperty ;
+         rdfs:domain :DriverAssignment ;
+         rdfs:range :Car .
+
+
+###  http://www.semanticweb.org/kater/ontologies/2026/0/f1_project#validForRace
+:validForRace rdf:type owl:ObjectProperty ;
+              rdfs:domain :DriverAssignment ;
+              rdfs:range :Race .
+
+
+###  http://www.semanticweb.org/kater/ontologies/2026/0/f1_project#winnerAssignment
+:winnerAssignment rdf:type owl:ObjectProperty ;
+                  rdfs:domain :Race ;
+                  rdfs:range :DriverAssignment .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.semanticweb.org/kater/ontologies/2026/0/f1_project#driverNumber
+:driverNumber rdf:type owl:DatatypeProperty ;
+              rdfs:domain :DriverAssignment ;
+              rdfs:range xsd:integer .
+
+
+###  http://www.semanticweb.org/kater/ontologies/2026/0/f1_project#nationality
+:nationality rdf:type owl:DatatypeProperty ;
+             rdfs:domain :Driver ;
+             rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/kater/ontologies/2026/0/f1_project#numberOfLaps
+:numberOfLaps rdf:type owl:DatatypeProperty ;
+              rdfs:domain :Race ;
+              rdfs:range xsd:integer .
+
+
+###  http://www.semanticweb.org/kater/ontologies/2026/0/f1_project#raceDate
+:raceDate rdf:type owl:DatatypeProperty ;
+          rdfs:domain :Race ;
+          rdfs:range xsd:dateTime .
+
+
+###  http://www.semanticweb.org/kater/ontologies/2026/0/f1_project#seasonYear
+:seasonYear rdf:type owl:DatatypeProperty ;
+            rdfs:domain :Season ;
+            rdfs:range xsd:integer .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/kater/ontologies/2026/0/f1_project#Car
+:Car rdf:type owl:Class ;
+     rdfs:subClassOf schema:Vehicle .
+
+
+###  http://www.semanticweb.org/kater/ontologies/2026/0/f1_project#Circuit
+:Circuit rdf:type owl:Class ;
+         rdfs:subClassOf schema:Place .
+
+
+###  http://www.semanticweb.org/kater/ontologies/2026/0/f1_project#Driver
+:Driver rdf:type owl:Class ;
+        rdfs:subClassOf foaf:Person .
+
+
+###  http://www.semanticweb.org/kater/ontologies/2026/0/f1_project#DriverAssignment
+:DriverAssignment rdf:type owl:Class ;
+                  rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                    owl:onProperty :assignedDriver ;
+                                    owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                    owl:onClass :Driver
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :assignedTeam ;
+                                    owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                    owl:onClass :Team
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :assignmentSeason ;
+                                    owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                    owl:onClass :Season
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :usesCar ;
+                                    owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                    owl:onClass :Car
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :driverNumber ;
+                                    owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                    owl:onDataRange xsd:integer
+                                  ] .
+
+
+###  http://www.semanticweb.org/kater/ontologies/2026/0/f1_project#Race
+:Race rdf:type owl:Class ;
+      rdfs:subClassOf schema:Event ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :hasCircuit ;
+                        owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                        owl:onClass :Circuit
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :partOfSeason ;
+                        owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                        owl:onClass :Season
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :winnerAssignment ;
+                        owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                        owl:onClass :DriverAssignment
+                      ] .
+
+
+###  http://www.semanticweb.org/kater/ontologies/2026/0/f1_project#Season
+:Season rdf:type owl:Class ;
+        owl:hasKey ( :seasonYear
+                   ) .
+
+
+###  http://www.semanticweb.org/kater/ontologies/2026/0/f1_project#Team
+:Team rdf:type owl:Class ;
+      rdfs:subClassOf schema:Organization .
+
+
+###  http://xmlns.com/foaf/0.1/Person
+foaf:Person rdf:type owl:Class .
+
+
+###  https://schema.org/Event
+schema:Event rdf:type owl:Class .
+
+
+###  https://schema.org/Organization
+schema:Organization rdf:type owl:Class .
+
+
+###  https://schema.org/Place
+schema:Place rdf:type owl:Class .
+
+
+###  https://schema.org/Vehicle
+schema:Vehicle rdf:type owl:Class .
+
+
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi
