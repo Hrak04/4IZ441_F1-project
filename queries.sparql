@@ -1,0 +1,55 @@
+
+PREFIX : <http://www.semanticweb.org/hrak04/ontologies/f1_project#> 
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+SELECT ?teamName (COUNT(DISTINCT ?driver) AS ?driversUsed) (GROUP_CONCAT(DISTINCT ?driverName; separator=", ") AS ?driverList)
+WHERE {
+  ?da a :DriverAssignment ;
+      :assignmentSeason :Season2024 ;
+      :assignedTeam ?team ;
+      :assignedDriver ?driver .
+
+  ?team foaf:name ?teamName .
+  ?driver foaf:name ?driverName .
+}
+GROUP BY ?teamName
+HAVING (COUNT(DISTINCT ?driver) > 2)
+ORDER BY DESC(?driversUsed)
+
+
+#################################################################
+
+PREFIX : <http://www.semanticweb.org/hrak04/ontologies/f1_project#> 
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+SELECT ?raceName ?driverName WHERE {
+  :Season2024 a :Season .
+
+  ?race a :Race ;
+        :partOfSeason :Season2024 ;
+        foaf:name ?raceName ;
+        :winnerAssignment ?wa .
+
+  ?wa :assignedTeam :Ferrari ;
+      :assignedDriver ?driver .
+
+  ?driver foaf:name ?driverName .
+}
+ORDER BY ?raceName
+
+#################################################################
+
+PREFIX : <http://www.semanticweb.org/hrak04/ontologies/f1_project#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+SELECT ?year ?driverName ?teamName WHERE {
+  ?season a :Season ;
+          :seasonYear ?year ;
+          :driversChampion ?driver ;
+          :constructorsChampion ?team .
+
+  ?driver foaf:name ?driverName .
+  ?team foaf:name ?teamName .
+}
+ORDER BY ?year
+
