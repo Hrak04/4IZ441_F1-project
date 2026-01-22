@@ -27,76 +27,100 @@ foaf:name rdf:type owl:AnnotationProperty .
 :assignedDriver rdf:type owl:ObjectProperty ;
                 owl:inverseOf :hasDriverAssignment ;
                 rdfs:domain :DriverAssignment ;
-                rdfs:range :Driver .
+                rdfs:range :Driver ;
+                rdfs:label "Assigned Driver"@en ;
+                rdfs:comment "Relates a driver assignment context to the specific driver involved."@en .
 
 
 ###  http://www.semanticweb.org/hrak04/ontologies/f1_project#assignedTeam
 :assignedTeam rdf:type owl:ObjectProperty ;
               owl:inverseOf :hasTeamAssignment ;
               rdfs:domain :DriverAssignment ;
-              rdfs:range :Team .
+              rdfs:range :Team ;
+              rdfs:label "Assigned Team"@en ;
+              rdfs:comment "Relates a driver assignment context to the team the driver is driving for."@en .
 
 
 ###  http://www.semanticweb.org/hrak04/ontologies/f1_project#assignmentSeason
 :assignmentSeason rdf:type owl:ObjectProperty ;
                   rdfs:domain :DriverAssignment ;
-                  rdfs:range :Season .
+                  rdfs:range :Season ;
+                  rdfs:label "Assignment Season"@en ;
+                  rdfs:comment "Specifies the season during which a driver assignment is valid."@en .
 
 
 ###  http://www.semanticweb.org/hrak04/ontologies/f1_project#constructorsChampion
 :constructorsChampion rdf:type owl:ObjectProperty ,
                                owl:FunctionalProperty ;
                       rdfs:domain :Season ;
-                      rdfs:range :Team .
+                      rdfs:range :Team ;
+                      rdfs:label "Constructors Champion"@en ;
+                      rdfs:comment "The team that won the constructors championship for the given season."@en .
 
 
 ###  http://www.semanticweb.org/hrak04/ontologies/f1_project#driversChampion
 :driversChampion rdf:type owl:ObjectProperty ,
                           owl:FunctionalProperty ;
                  rdfs:domain :Season ;
-                 rdfs:range :Driver .
+                 rdfs:range :Driver ;
+                 rdfs:label "Drivers Champion"@en ;
+                 rdfs:comment "The driver who won the drivers championship for the given season."@en .
 
 
 ###  http://www.semanticweb.org/hrak04/ontologies/f1_project#hasCircuit
 :hasCircuit rdf:type owl:ObjectProperty ;
             rdfs:domain :Race ;
-            rdfs:range :Circuit .
+            rdfs:range :Circuit ;
+            rdfs:label "Has Circuit"@en ;
+            rdfs:comment "Links a race event to the physical circuit where it takes place."@en .
 
 
 ###  http://www.semanticweb.org/hrak04/ontologies/f1_project#hasDriverAssignment
 :hasDriverAssignment rdf:type owl:ObjectProperty ;
                      rdfs:domain :Driver ;
-                     rdfs:range :DriverAssignment .
+                     rdfs:range :DriverAssignment ;
+                     rdfs:label "Has Driver Assignment"@en ;
+                     rdfs:comment "Links a driver to a driver assignment describing their participation context (team/season/car)."@en .
 
 
 ###  http://www.semanticweb.org/hrak04/ontologies/f1_project#hasTeamAssignment
 :hasTeamAssignment rdf:type owl:ObjectProperty ;
                    rdfs:domain :Team ;
-                   rdfs:range :DriverAssignment .
+                   rdfs:range :DriverAssignment ;
+                   rdfs:label "Has Team Assignment"@en ;
+                   rdfs:comment "Links a team to the driver assignments associated with it."@en .
 
 
 ###  http://www.semanticweb.org/hrak04/ontologies/f1_project#partOfSeason
 :partOfSeason rdf:type owl:ObjectProperty ;
               rdfs:domain :Race ;
-              rdfs:range :Season .
+              rdfs:range :Season ;
+              rdfs:label "Part Of Season"@en ;
+              rdfs:comment "Indicates the championship season to which a specific race belongs."@en .
 
 
 ###  http://www.semanticweb.org/hrak04/ontologies/f1_project#usesCar
 :usesCar rdf:type owl:ObjectProperty ;
          rdfs:domain :DriverAssignment ;
-         rdfs:range :Car .
+         rdfs:range :Car ;
+         rdfs:label "Uses Car"@en ;
+         rdfs:comment "Specifies the car model used within a specific driver assignment."@en .
 
 
 ###  http://www.semanticweb.org/hrak04/ontologies/f1_project#validForRace
 :validForRace rdf:type owl:ObjectProperty ;
               rdfs:domain :DriverAssignment ;
-              rdfs:range :Race .
+              rdfs:range :Race ;
+              rdfs:label "Valid For Race"@en ;
+              rdfs:comment "Links an assignment to a specific race, indicating participation."@en .
 
 
 ###  http://www.semanticweb.org/hrak04/ontologies/f1_project#winnerAssignment
 :winnerAssignment rdf:type owl:ObjectProperty ;
                   rdfs:domain :Race ;
-                  rdfs:range :DriverAssignment .
+                  rdfs:range :DriverAssignment ;
+                  rdfs:label "Winner Assignment"@en ;
+                  rdfs:comment "Links a race to the driver assignment (driver + team) that won the race."@en .
 
 
 #################################################################
@@ -106,31 +130,41 @@ foaf:name rdf:type owl:AnnotationProperty .
 ###  http://www.semanticweb.org/hrak04/ontologies/f1_project#driverNumber
 :driverNumber rdf:type owl:DatatypeProperty ;
               rdfs:domain :DriverAssignment ;
-              rdfs:range xsd:integer .
+              rdfs:range xsd:integer ;
+              rdfs:label "Driver Number"@en ;
+              rdfs:comment "The racing number used by the driver within a specific driver assignment (season/team context)."@en .
 
 
 ###  http://www.semanticweb.org/hrak04/ontologies/f1_project#nationality
 :nationality rdf:type owl:DatatypeProperty ;
              rdfs:domain :Driver ;
-             rdfs:range xsd:string .
+             rdfs:range xsd:string ;
+             rdfs:label "Nationality"@en ;
+             rdfs:comment "The nationality of the driver."@en .
 
 
 ###  http://www.semanticweb.org/hrak04/ontologies/f1_project#numberOfLaps
 :numberOfLaps rdf:type owl:DatatypeProperty ;
               rdfs:domain :Race ;
-              rdfs:range xsd:integer .
+              rdfs:range xsd:integer ;
+              rdfs:label "Number Of Laps"@en ;
+              rdfs:comment "The total number of laps completed in the race."@en .
 
 
 ###  http://www.semanticweb.org/hrak04/ontologies/f1_project#raceDate
 :raceDate rdf:type owl:DatatypeProperty ;
           rdfs:domain :Race ;
-          rdfs:range xsd:dateTime .
+          rdfs:range xsd:dateTime ;
+          rdfs:label "Race Date"@en ;
+          rdfs:comment "The specific date and time when the race started."@en .
 
 
 ###  http://www.semanticweb.org/hrak04/ontologies/f1_project#seasonYear
 :seasonYear rdf:type owl:DatatypeProperty ;
             rdfs:domain :Season ;
-            rdfs:range xsd:integer .
+            rdfs:range xsd:integer ;
+            rdfs:label "Season Year"@en ;
+            rdfs:comment "The calendar year of the championship season."@en .
 
 
 #################################################################
@@ -139,17 +173,23 @@ foaf:name rdf:type owl:AnnotationProperty .
 
 ###  http://www.semanticweb.org/hrak04/ontologies/f1_project#Car
 :Car rdf:type owl:Class ;
-     rdfs:subClassOf schema:Vehicle .
+     rdfs:subClassOf schema:Vehicle ;
+     rdfs:label "Car"@en ;
+     rdfs:comment "A racing vehicle designed for Formula 1 competition."@en .
 
 
 ###  http://www.semanticweb.org/hrak04/ontologies/f1_project#Circuit
 :Circuit rdf:type owl:Class ;
-         rdfs:subClassOf schema:Place .
+         rdfs:subClassOf schema:Place ;
+         rdfs:label "Circuit"@en ;
+         rdfs:comment "A race track or venue where Formula 1 races are held."@en .
 
 
 ###  http://www.semanticweb.org/hrak04/ontologies/f1_project#Driver
 :Driver rdf:type owl:Class ;
-        rdfs:subClassOf foaf:Person .
+        rdfs:subClassOf foaf:Person ;
+        rdfs:label "Driver"@en ;
+        rdfs:comment "A professional athlete who drives a Formula 1 car."@en .
 
 
 ###  http://www.semanticweb.org/hrak04/ontologies/f1_project#DriverAssignment
@@ -178,7 +218,9 @@ foaf:name rdf:type owl:AnnotationProperty .
                                     owl:onProperty :driverNumber ;
                                     owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                     owl:onDataRange xsd:integer
-                                  ] .
+                                  ] ;
+                  rdfs:label "Driver Assignment"@en ;
+                  rdfs:comment "An n-ary relation connecting a Driver, a Team, and a Car for a specific Season."@en .
 
 
 ###  http://www.semanticweb.org/hrak04/ontologies/f1_project#Race
@@ -198,18 +240,24 @@ foaf:name rdf:type owl:AnnotationProperty .
                         owl:onProperty :winnerAssignment ;
                         owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                         owl:onClass :DriverAssignment
-                      ] .
+                      ] ;
+      rdfs:label "Race"@en ;
+      rdfs:comment "An individual Grand Prix event occurring at a specific circuit on a specific date."@en .
 
 
 ###  http://www.semanticweb.org/hrak04/ontologies/f1_project#Season
 :Season rdf:type owl:Class ;
         owl:hasKey ( :seasonYear
-                   ) .
+                   ) ;
+        rdfs:label "Season"@en ;
+        rdfs:comment "A specific year of the Formula 1 Championship."@en .
 
 
 ###  http://www.semanticweb.org/hrak04/ontologies/f1_project#Team
 :Team rdf:type owl:Class ;
-      rdfs:subClassOf schema:Organization .
+      rdfs:subClassOf schema:Organization ;
+      rdfs:label "Team"@en ;
+      rdfs:comment "A constructor or racing organization competing in Formula 1."@en .
 
 
 ###  http://xmlns.com/foaf/0.1/Person
