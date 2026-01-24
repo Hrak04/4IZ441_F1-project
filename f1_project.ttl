@@ -9,7 +9,8 @@
 @base <http://www.semanticweb.org/hrak04/ontologies/f1_project#> .
 
 <http://www.semanticweb.org/hrak04/ontologies/f1_project#> rdf:type owl:Ontology ;
-                                                            rdfs:comment "This is my semestral project for 4IZ441" .
+                                                            rdfs:comment "This is an OWL ontology and sample data modeling Formula 1 seasons, races, drivers, teams, cars, and driver assignments.
+                                                                          The project was created as a semestral assignment for the course 4IZ441." .
 
 #################################################################
 #    Annotation properties
